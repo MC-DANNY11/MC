@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MC.MainPage"
+             NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <StackLayout BackgroundColor="White">
+            <!-- Título de la página -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center" BackgroundColor="White">
+                <Label Text="Lista de personajes"
+                       FontSize="30"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Start"
+                       Padding="10"
+                       TextColor="Black" />
+            </StackLayout>
+            <!-- CollectionView para la lista de personajes -->
+            <CollectionView x:Name="listViewPersonajes"
+                            ItemsSource="{Binding Personajes}"
+                            SelectionMode="None"
+                            BackgroundColor="AliceBlue"
+                            Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gray"
+                               CornerRadius="10"
+                               Padding="10"
+                               Margin="5">
+                            <StackLayout Orientation="Horizontal"
+                                         Spacing="10">
+                                <!-- Imagen del personaje -->
+                                <Image Source="{Binding image}"
+                                       WidthRequest="80"
+                                       HeightRequest="80"
+                                       Aspect="AspectFill" />
+                                <!-- Información del personaje -->
+                                <StackLayout Orientation="Vertical"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding name}"
+                                           FontSize="20"
+                                           TextColor="Blue"
+                                           FontAttributes="Bold" />
+                                    <Label Text="{Binding species}"
+                                           FontSize="15"
+                                           TextColor="Red"
+                                           FontAttributes="Bold" />
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
